@@ -1,9 +1,5 @@
-from gmpy2 import mpz
+from gmpy2 import mpz, bit_mask
 from tqdm import trange
-
-
-def mersenne(p):
-    return (1 << mpz(p)) - 1
 
 
 def fast_mod(k, Mp, p):
@@ -23,7 +19,7 @@ def lucas_lehmer(p, progress=True):
     if progress:
         range = trange
     
-    Mp = mersenne(p)
+    Mp = bit_mask(p)  # (1 << p) - 1
     s = mpz(4)
     
     for _ in range(p - 2):
