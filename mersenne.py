@@ -25,4 +25,4 @@ def lucas_lehmer(p, progress=True):
     for _ in range(p - 2):
         s = fast_mod(s*s - 2, Mp, p)
     
-    return not s
+    return not s or p == 2
